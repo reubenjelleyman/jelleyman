@@ -1,0 +1,29 @@
+div {
+        font-family: helvetica;
+        margin-top: 0;
+        margin-bottom: 20;
+        margin-right: 20;
+    }
+
+body {
+    margin: 0;
+    font-family: helvetica;
+}
+
+
+.body-padding   {
+    padding-top: 200px;    
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+    }
+
+
+.home-background{
+    width: 100%;
+    display: flex;
+    align-content: center;
+}

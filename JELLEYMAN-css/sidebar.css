@@ -1,0 +1,64 @@
+.sidebar{
+    z-index: 1;
+    color: gainsboro;
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    bottom: 10px;
+    width: 100px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.sidebar-element{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+
+.sidebar-element:hover {
+    
+}
+
+.sidebar-element a:visited{
+    color: gainsboro
+}
+
+.sidebar a{
+    text-decoration: none;
+}
+
+.sidebar a{
+    color: gainsboro;
+}
+
+.language {
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    font-family: helvetica;
+    color: gainsboro;
+    width: 100px;
+    margin-left: 20px;
+    text-align: right;
+}
+
+@media (max-width: 550px){
+    .sidebar{
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 1200px){
+    .sidebar{
+        font-size: 21px;
+        }   
+    }
+
+@media (min-width: 1201px){
+    .sidebar{
+        font-size: 24px;
+    }
+}
