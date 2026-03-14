@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title data-i18n="bio_page_title"></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="images/halfharmonicNotehead_0002.png" type="image/png">
+        <link rel="stylesheet" href="JELLEYMAN-css/general.css?v=6.1">
+        <link rel="stylesheet" href="JELLEYMAN-css/header.css?v=6.1">
+        <link rel="stylesheet" href="JELLEYMAN-css/footer.css?v=6.1">
+        <link rel="stylesheet" href="JELLEYMAN-css/sidebar.css?v=6.1">
+        <link rel="stylesheet" href="JELLEYMAN-css/bio.css?v=6.1">
+        <link rel="stylesheet" href="JELLEYMAN-css/hamburger.css?v=6.1">
+        </head>
+
+        <body class="body-bio">
+
+            <!-- Fixed Background -->
+            <div id="bio-background"></div>
+
+            <!-- Middle Section (Initially Invisible) -->
+            <div id="middle-section">
+                <div class="content-wrapper">
+                    <div class="text-content">
+                        <p data-i18n="bio_page_bio_text_1"></p>
+                        <p data-i18n="bio_page_bio_text_2"></p>
+                        <p data-i18n="bio_page_bio_text_3"></p>
+                        <p data-i18n="bio_page_bio_text_4"></p>
+                        <p data-i18n="bio_page_bio_text_5"></p>
+                        <p><a href="pdfs/bio_2026-musique.pdf" download data-i18n="bio_page_download" style="color: whitesmoke; text-decoration: underline;"></a></p>
+                        </div>                    <div class="image-content">
+                        <img src="images/JELLEYMAN-profile2.jpg" alt="Reuben Jelleyman">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Image Section (Initially Invisible) -->
+            <div id="final-image-container">
+                 <img src="images/JELLEYMAN-profile4.JPG" alt="Reuben Jelleyman">
+                 <div class="credits">
+                     <p data-i18n="website_credit">website design & build: Reuben Jelleyman</p>
+                     <p data-i18n="photo_credit">photo credits: Reuben Jelleyman, Danielle Jelleyman</p>
+                 </div>
+            </div>
+
+            <!-- Fixed UI Elements -->
+            <div class="hamburger-menu" id="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <nav id="main-nav">
+                <div id="language-switcher-container"></div>
+                <div id="sidebar-placeholder" class="sidebar">
+                </div>
+            </nav>
+
+            <div class="header-bottom">
+                <div class="header-central-section">
+                    <div id="scroll-arrow-up"><span>&#x25B2;</span></div>
+                </div>
+            </div>
+
+            <div class="header-top">
+                 <div class="header-left-section">
+                    <div class="header-left-section-title" >
+                        <a href="index.html">REUBEN JELLEYMAN</a>
+                    </div>
+                    <div class="header-left-section-sub">
+                        <div class="header-left-section-sub-l" data-i18n="bio_page_composer">
+                        </div>
+                        <div class="header-left-section-sub-c" data-i18n="separator">
+                        </div>
+                        <div class="header-left-section-sub-r" data-i18n="bio_page_bio_title">
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-left-section" data-i18n="bio_page_updated"></div>
+                <div class="footer-central-section">
+                    <div id="scroll-arrow"><span>&#x25BC;</span></div>
+                </div>
+                <div class="footer-right-section" data-i18n="bio_page_copyright" data-no-fade-i18n="true"></div>
+            </div>
+
+            <script src="i18n.js?v=6.1" type="module"></script>
+            <script src="bio-scroll.js?v=6.1"></script>
+            <script src="hamburger.js?v=6.1"></script>
+        </body>
+        </html>

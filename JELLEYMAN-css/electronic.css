@@ -1,0 +1,222 @@
+body.body-electronic {
+    background-color: black;
+    overflow: hidden; /* Prevent vertical overflow on body */
+    overflow-x: hidden !important; /* Force prevent horizontal overflow */
+}
+
+#electronic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/JELLEYMAN-electronic.JPG');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.central-column {
+    width: 100%; /* Full browser screen */
+    margin: 0;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Positioning for items within central-column */
+#middle-section, 
+#video-container, 
+#sidebar-placeholder, 
+.header-bottom, 
+.bandcamp-player-wrapper, 
+.footer {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#sidebar-placeholder {
+    top: 80px;
+    right: 40px;
+    width: auto;
+}
+
+/* Bandcamp Player Layout and Shrink Logic */
+.bandcamp-player-wrapper {
+    top: 100px;
+    left: 40px; /* Match updated date margin */
+    width: 350px;
+    height: 470px;
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+#bandcamp-iframe {
+    width: 350px;
+    height: 470px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Shrunk format triggered by JS */
+.bandcamp-player-wrapper.shrunk {
+    height: 200px; /* Only show the bottom controls of the large player */
+}
+.bandcamp-player-wrapper.shrunk #bandcamp-iframe {
+    transform: translateY(-270px); /* Shift artwork up out of view */
+}
+
+/* Arrow Styling - Centered by parent flex containers */
+#scroll-arrow, #scroll-arrow-up {
+    z-index: 1001;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    position: static; 
+    width: auto;
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#scroll-arrow-up {
+    position: fixed; 
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#scroll-arrow.visible, #scroll-arrow-up.visible {
+    opacity: 0.5;
+    pointer-events: auto;
+}
+
+#scroll-arrow.visible:hover, #scroll-arrow-up.visible:hover {
+    opacity: 0.9;
+}
+
+/* Animations and content formatting */
+#middle-section, #video-container {
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#middle-section .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 900px; /* Constrain width to prevent overflow */
+    align-items: center;
+    color: white;
+    height: 60vh; /* Set a height to make it scrollable */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Absolutely prevent horizontal scroll */
+    padding-right: 25px; /* Add space for the scrollbar */
+    margin-bottom: 0; /* Override global div margin */
+
+    /* Native Scrollbar Styling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #555 transparent;
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+#middle-section .content-wrapper::-webkit-scrollbar {
+    width: 25px; /* Increased width */
+}
+
+#middle-section .content-wrapper::-webkit-scrollbar-track {
+    background: transparent; /* Invisible track */
+}
+
+#middle-section .content-wrapper::-webkit-scrollbar-thumb {
+    background-color: #555; /* Thumb color */
+    border-radius: 4px; /* Rounded corners for thumb */
+    border: 2px solid transparent; /* Smaller padding around thumb */
+    background-clip: content-box; /* Ensure border is not covered */
+}
+
+#middle-section .content-wrapper::-webkit-scrollbar-button {
+    background-color: transparent; /* No background on buttons */
+    color: white; /* Arrow color */
+    font-size: 16px; /* Arrow size */
+    opacity: 0.5; /* Initial opacity */
+    transition: opacity 0.3s ease-in-out;
+    height: 16px; /* Explicit height for buttons */
+}
+
+#middle-section .content-wrapper::-webkit-scrollbar-button:hover {
+    opacity: 0.9; /* Hover opacity */
+}
+
+#middle-section .text-content {
+    width: 100%; /* Fill content-wrapper */
+    text-align: center;
+    pointer-events: auto; /* Re-enable pointer events so text is selectable */
+}
+
+#middle-section .photo-content {
+    width: 100%;
+    text-align: center;
+}
+
+#middle-section .photo-content img {
+    width: auto;
+    max-width: 100%; /* Scale within parent */
+    max-height: 45vh; /* Reduced from 58vh to provide more clearance */
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Further shrink for very short screens */
+@media (max-height: 700px) {
+    #middle-section .photo-content img {
+        max-height: 35vh;
+    }
+}
+
+.tour-dates {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#video-container iframe {
+    width: 100%;
+    max-width: calc(74.1vh * 16 / 9);
+    max-height: 74.1vh;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: none;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 1350px) {
+    .bandcamp-player-wrapper {
+        top: 50px;
+        height: 200px;
+    }
+    .bandcamp-player-wrapper #bandcamp-iframe {
+        transform: translateY(-270px);
+    }
+}
+
+@media (max-width: 550px) {
+    #bandcamp-iframe { width: 100%; }
+}

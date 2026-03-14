@@ -1,13 +1,25 @@
-div {
-        font-family: helvetica;
-        margin-top: 0;
-        margin-bottom: 20;
-        margin-right: 20;
-    }
-
 body {
     margin: 0;
     font-family: helvetica;
+    background-color: black; /* Ensure a dark background */
+}
+
+div {
+        font-family: helvetica;
+        margin-top: 0;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+/* OLD BODY STYLES (moved above) */
+
+.header-left-section-sub-l[data-i18n] {
+    transition: opacity 0.5s ease; /* Smooth transition for COMPOSER/COMPOSITEUR text */
+}
+
+.footer-left-section[data-i18n],
+.footer-right-section[data-i18n] {
+    transition: opacity 0.5s ease; /* Smooth transition for footer text */
 }
 
 
@@ -26,4 +38,21 @@ a {
     width: 100%;
     display: flex;
     align-content: center;
+}
+
+#static-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/montage-1-5.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -2; /* Ensure it's behind the background-montage */
+}
+
+#main-nav {
+    position: relative;
+    z-index: 10000; /* Ensure nav is above middle section and headers */
 }

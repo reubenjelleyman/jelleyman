@@ -1,0 +1,15 @@
+# Logs
+server.log
+
+# Backup files
+*.bak
+
+# Source/dev files that shouldn't be served
+images/*.tex
+images/*.rtf
+images/CV_*
+images/Capture*
+
+# OS files
+.DS_Store
+Thumbs.db

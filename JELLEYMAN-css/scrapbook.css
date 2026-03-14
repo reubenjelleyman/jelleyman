@@ -1,0 +1,301 @@
+/* Horizontal Filmstrip Layout for Scrapbook with Horizontal Top Nav */
+
+.background-montage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: opacity 0.5s ease-out, background-image 0.5s ease-out;
+    pointer-events: none;
+}
+
+body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-family: helvetica, Arial, sans-serif;
+}
+
+/* Header Adjustments */
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 9998; /* Lower than sidebar (9999) but above content */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px; /* Match the 40px margin of other pages */
+    background: transparent; /* Removed linear-gradient shadow */
+    box-sizing: border-box;
+}
+
+.body-scrapbook .header-left-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px; /* Slight gap between REUBEN JELLEYMAN and COMPOSER | SCRAPBOOK */
+    margin-left: 0;
+    text-align: left;
+}
+
+.body-scrapbook .header-left-section-title {
+    font-size: 80px; /* Exact match to index page */
+    line-height: 1;
+}
+
+.body-scrapbook .header-left-section-sub {
+    font-size: 75px; /* Made 75px as requested */
+    color: #fff;
+    line-height: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.3em;
+}
+
+/* Title adjustments for smaller screens to prevent overlap */
+@media (min-width: 860px) and (max-width: 1200px) {
+    .body-scrapbook .header-left-section-title { font-size: 51.6px; }
+    .body-scrapbook .header-left-section-sub { font-size: 40.8px; }
+}
+
+@media (min-width: 600px) and (max-width: 859px) {
+    .body-scrapbook .header-left-section-title { font-size: 36.5904px; }
+    .body-scrapbook .header-left-section-sub { font-size: 26.136px; }
+}
+
+@media (max-width: 599px) {
+    .body-scrapbook .header-left-section-title { font-size: 25px; }
+    .body-scrapbook .header-left-section-sub { font-size: 18px; }
+}
+
+/* Translucent background removed from sidebar and language switcher for visibility over the header gradient */
+.body-scrapbook .sidebar {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+    right: 40px; /* Aligned with standard margin */
+    top: 100px;
+}
+
+/* Style the container for the language switcher */
+.body-scrapbook #language-switcher-container {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+    position: fixed;
+    top: 40px; /* Aligned with standard header top padding */
+    right: 40px; /* Aligned with standard right margin */
+    z-index: 10001;
+}
+
+/* Ensure inner elements play nice */
+.body-scrapbook #language-switcher-container .language {
+    background: transparent !important;
+    padding: 0 !important;
+    top: 0 !important;
+}
+
+/* Remove shadow from hamburger menu bars on this page */
+.body-scrapbook .hamburger-menu .bar {
+    box-shadow: none;
+}
+
+/* Remove text-shadow from navigation elements on this page */
+.body-scrapbook .sidebar-element:hover a,
+.body-scrapbook .sidebar-element span,
+.body-scrapbook .language a:hover {
+    text-shadow: none !important;
+}
+
+/* Transform Sidebar into Horizontal Navigation */
+@media (min-width: 1024px) {
+    body.body-scrapbook {
+        overflow: hidden;
+    }
+
+    .scrapbook-scroll-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        height: calc(100vh - 100px); /* Moved back down 20px (total 100px from bottom) */
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    /* Filmstrip Layout */
+    .scrapbook-middle-column {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: max-content;
+        /* Padding top adjusted to pull content out of the shadow of the new two-line header */
+        padding: 340px 240px 80px 80px; /* Moved back down 40px */
+        gap: 60px;
+        align-items: stretch;
+        box-sizing: border-box;
+    }
+
+    .blog-post {
+        width: 450px;
+        height: calc(100vh - 520px); /* Adjusted for 340px top and 80px bottom padding inside 100vh - 100px wrapper */
+        overflow-y: auto;
+        flex-shrink: 0;
+        padding: 0 60px 0 0;
+        border-right: 1px solid #222;
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .blog-post:last-child {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    /* Custom horizontal scrollbar styling */
+    .scrapbook-scroll-wrapper::-webkit-scrollbar {
+        height: 4px;
+    }
+    .scrapbook-scroll-wrapper::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .scrapbook-scroll-wrapper::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 2px;
+    }
+}
+
+/* Mobile fallback */
+@media (max-width: 1023px) {
+    body.body-scrapbook {
+        overflow: hidden;
+    }
+
+    .scrapbook-scroll-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 1;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 100px, black 360px);
+        mask-image: linear-gradient(to bottom, transparent 100px, black 360px);
+    }
+
+    .scrapbook-middle-column {
+        padding: 250px 20px 40px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .blog-post {
+        padding: 20px 0;
+    }
+
+
+    .footer {
+        display: none;
+    }
+}
+
+/* Typography and common elements */
+.blog-date {
+    font-family: monospace;
+    font-size: 0.85em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    display: block;
+}
+
+.blog-post h2 {
+    font-size: 2.2em;
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-weight: 300;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.blog-post h3 {
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.blog-post p {
+    font-size: 1.05em;
+    line-height: 1.6;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.blog-post img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.blot-logo-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 2px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.blot-logo-container img {
+    margin: 0;
+}
+
+.blot-logo-container .blot-logo-original {
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Prevents overflow but allows original size if smaller */
+}
+
+.blot-logo-container .blot-issue-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+
+
+/* Custom scrollbar for filmstrip panels */
+.blog-post::-webkit-scrollbar {
+    width: 4px;
+}
+.blog-post::-webkit-scrollbar-track {
+    background: transparent;
+}
+.blog-post::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 2px;
+}

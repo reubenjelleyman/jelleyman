@@ -1,112 +1,170 @@
-.header {
-    height: 50px;
+.header-bottom {
     display: flex;
     flex-direction: row;
-    align-content: center;
+    align-items: center;
     justify-content: space-between;
     position: fixed;
-    padding-top: 10px;
-    padding-left: 10px;
-    z-index: 1;
-    top: 10px;
-    left: 10px;
-    right: 10px;               
+    left: 0;
+    right: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index: 1002;
+    bottom: 55px;
+    transition: all 1s ease-in-out;
+    box-sizing: border-box;
 }
 
-.header a:visited{
+.header-left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align right */
+    text-align: right;
+    margin-left: auto; /* Push to right */
+}
+
+.header-central-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-right-section {
+    flex: 1;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    z-index: 1002;
+    /* transition: all 1s ease-in-out; */ /* Removed to allow JS control */
+    box-sizing: border-box;
+}
+
+body.body-index .header-top {
     color: black;
 }
 
-.header-left-section{
-    width: 415px;
-    align-content: center;
-    font-family: helvetica; 
-    font-size-adjust: auto;
-    flex-shrink: 0;
-    padding-bottom: 5px;
+body.body-index .header-top a {
+    color: black;
 }
 
-
-.header-left-section-title{
-    font-size: 40px;
-    column-fill: auto
+body.body-instrumental .header-top,
+body.body-bio .header-top {
+    color: white;
 }
 
-.header-left-section-sub{
+body.body-instrumental .header-top a,
+body.body-bio .header-top a {
+    color: white;
+}
+
+.header-top .header-left-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+}
+
+/* Language Switcher */
+#language-switcher-container {
+    position: absolute;
+    top: 20px;
+    right: 40px; /* Match copyright / sidebar margin */
+    width: auto;
+    z-index: 10000;
+}
+
+/* Force .language to stay within its container and not fly off screen */
+#language-switcher-container .language {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
     display: flex;
-    flex-direction: row;
-    font-size: 28px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    margin: 0 !important;
 }
 
-
-
-
-.header-left-section-sub-l{
-    justify-content: space-between;
-    align-content: center;
-    width: auto;
+#language-switcher-container .language div {
+    margin: 0 !important;
 }
-.header-left-section-sub-c{
-    
-    justify-content: space-between;
-    flex: 1;
-    align-content: center;
-    text-align: center;
-    
-}
-.header-left-section-sub-r{
-    justify-content: space-between;
-    align-content: center;
-    width: auto;
+body.body-index #language-switcher-container a,
+body.body-index #language-switcher-container .separator {
+    color: black;
 }
 
-
-.header-central-section{
-    flex: 1;
+/* Language switcher font sizes matched to sidebar */
+#language-switcher-container a,
+#language-switcher-container .separator {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.header-right-section{
-    font-family: helvetica;
-    color: gainsboro;
-    width: 100px;
-    margin-left: 20px;
-    text-align: center;
-}
-
-@media (max-width: 550px){
-    .header-left-section-title{
-        font-size: 30px;
+@media (max-width: 550px) {
+    #language-switcher-container a,
+    #language-switcher-container .separator {
+        font-size: 18px;
     }
-    .header-left-section-sub{
-        font-size: 20px;
-    }
-    .header-left-section{
-        width: 310px;
-        }
 }
 
-@media (min-width: 551px) and (max-width: 1200px){
-    .header-left-section-title{
-        font-size: 40px;
+@media (min-width: 551px) and (max-width: 1200px) {
+    #language-switcher-container a,
+    #language-switcher-container .separator {
+        font-size: 21px;
     }
-    .header-left-section-sub{
-        font-size: 30px;
-    }
-    .header-left-section{
-        width: 415px;
-        }
 }
 
-@media (min-width: 1201px){
-    .header-left-section-title{
-        font-size: 60px;
+/* Language switcher visibility for extra small screens (will be managed by JS for hamburger) */
+@media (max-width: 599px) {
+    #language-switcher-container {
+        display: none; /* Hidden by default when hamburger is active */
     }
-    .header-left-section-sub{
-        font-size: 50px;
-    }
-    .header-left-section{
-        width: 620px;
-        }
 }
 
+/* Title Layout Fixes - Default (large screen, >1200px) */
+.header-left-section-title {
+    font-size: 80px;
+    white-space: nowrap;
+}
 
+.header-left-section-sub {
+    font-size: 60px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    letter-spacing: 1.5px; /* Added for a bit more space */
+    margin-top: 5px; /* Added for space from title */
+}
+
+.header-left-section-sub div {
+    margin: 0 !important;
+    white-space: nowrap; /* Prevent wrapping of children */
+    flex-shrink: 0; /* Prevent flex items from shrinking and wrapping */
+}
+
+/* Medium screens (860px - 1200px) */
+@media (min-width: 860px) and (max-width: 1200px) {
+    .header-left-section-title { font-size: 51.6px; }
+    .header-left-section-sub { font-size: 40.8px; }
+}
+
+/* Small screens (600px - 859px) */
+@media (min-width: 600px) and (max-width: 859px) {
+    .header-left-section-title { font-size: 36.5904px; }
+    .header-left-section-sub { font-size: 26.136px; }
+}
+
+/* Extra small screens (<600px) - New breakpoint for hamburger menu */
+@media (max-width: 599px) {
+    .header-left-section-title { font-size: 25px; }
+    .header-left-section-sub { font-size: 18px; }
+}

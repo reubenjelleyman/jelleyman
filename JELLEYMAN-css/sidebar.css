@@ -1,25 +1,47 @@
 .sidebar{
-    z-index: 1;
-    color: gainsboro;
+    z-index: 9999; /* High z-index to prevent obstruction */
+    color: gainsboro; /* Default color for other pages */
     position: fixed;
-    top: 20px;
+    top: 80px; /* Position below header */
     right: 40px;
     bottom: 10px;
-    width: 100px;
+    width: 150px; /* Ensure enough width */
     text-align: right;
     font-size: 18px;
 }
 
-.sidebar-element{
+body.body-index .sidebar {
+    color: black; /* Black text for index page */
+}
+
+body.body-index .sidebar a {
+    color: black; /* Black links for index page */
+}
+
+body.body-index .sidebar-element:hover a,
+body.body-index .sidebar-element span,
+body.body-index .language a:hover { /* This rule might have been present, or a simpler one */
+    text-shadow: 0 0 1px black; /* Subtle glow effect for black text */
+    color: black; /* Ensure hover color is also black or a darker shade */
+}
+
+.sidebar-element {
+    position: relative; /* Needed for z-index of text */
     display: flex;
     justify-content: right;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    }
+    /* Removed overflow: hidden; as it's no longer needed for the background image */
+}
 
-.sidebar-element:hover {
-    
+.sidebar-element:hover a,
+.sidebar-element span,
+.language a:hover { /* This rule might have been present, or a simpler one */
+    text-shadow: 0 0 1px gainsboro; /* Very subtle glow effect */
+    color: white; /* Slightly brighter color */
+    transform: none; /* Remove scale effect */
+    transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .sidebar-element a:visited{
@@ -37,13 +59,59 @@
 .language {
     position: absolute;
     right: 0px;
-    top: 20px;
+    top: -60px; /* Position relative to sidebar, aligned with REUBEN JELLEYMAN */
     font-family: helvetica;
-    color: gainsboro;
-    width: 100px;
+    width: 150px; /* Ensure enough width for links and separator */
     margin-left: 20px;
     text-align: right;
+    display: flex; /* Use flexbox for layout */
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Vertically center items */
+    gap: 5px; /* Space between items */
 }
+
+.language a {
+    color: gainsboro; /* Default link color */
+    text-decoration: none; /* No underline by default */
+    cursor: pointer;
+    padding: 6px 8px; /* Larger hit target */
+    pointer-events: auto; /* Ensure clickable */
+    transition: color 0.5s ease, font-weight 0.5s ease; /* Smooth transition for text */
+}
+
+.language a:hover {
+    color: white; /* Slightly brighter on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+    font-weight: bold; /* Bold on hover */
+    background-color: transparent; /* Removed background color */
+}
+
+.language .separator { /* Style for the | separator */
+    color: gainsboro; /* Default separator color */
+    font-weight: bold;
+}
+
+body.body-index .language a,
+body.body-index .language .separator {
+    color: black; /* Black on index page */
+}
+
+body.body-index .language a:hover {
+    color: #333; /* Darker on hover for index page */
+    background-color: transparent; /* Removed background color */
+}
+
+/* Add transition for the static background element */
+#static-background {
+    transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+    background-color: transparent; /* Ensure no white background */
+}
+
+.sidebar-element [data-i18n] {
+    transition: opacity 0.5s ease; /* Smooth transition for language text changes */
+}
+
+
 
 @media (max-width: 550px){
     .sidebar{

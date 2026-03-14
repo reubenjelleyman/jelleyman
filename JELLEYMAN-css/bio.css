@@ -1,64 +1,246 @@
-    .bio-title {
-        font-family: helvetica;
-        font-size: 24px;
-        font-weight: medium;
-        margin-bottom: 10;      
+body.body-bio {
+    background-color: black;
+    overflow: hidden;
+}
+
+#bio-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/JELLEYMAN-profile.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+@media (max-width: 1400px) {
+    #bio-background {
+        background-position: 78% center;
     }
+}
 
+#middle-section {
+    position: absolute;
+    top: 100px; /* Bounded by header */
+    bottom: 100px; /* Bounded by footer (changed from 200px) */
+    left: 0;
+    /* Width is center (50vw) + image width (500px) + gap to scrollbar (50px) */
+    width: calc(50vw + 550px); 
+    max-width: calc(100vw - 215px); /* Protect the sidebar area */
+    height: calc(100vh - 200px); /* Adjusted for 100px top and 100px bottom */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    display: block; 
+    box-sizing: border-box;
+    z-index: 1000;
+    padding: 0; 
+    
+    overflow-y: auto; /* Enable scrolling */
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+}
 
-    .bio-grid {
-        font-family: helvetica;
+/* Custom Scrollbar Styling */
+#middle-section::-webkit-scrollbar {
+    width: 25px;
+}
+
+#middle-section::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 0; 
+}
+
+#middle-section::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+#middle-section::-webkit-scrollbar-button {
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+    height: 16px;
+}
+
+#middle-section::-webkit-scrollbar-button:hover {
+    opacity: 0.9;
+}
+
+#middle-section .content-wrapper {
+    display: block;
+    width: 100%;
+    height: auto; 
+    min-height: 100%;
+    color: white;
+    position: relative;
+    margin-bottom: 0; /* Override global div margin */
+}
+
+/* Text on the left half */
+#middle-section .text-content {
+    width: 500px; 
+    /* margin-left = center line (50vw) - gap from center (40px) - text width (500px) */
+    margin-left: calc(50vw - 540px); 
+    text-align: left;
+    pointer-events: auto;
+    margin-bottom: 0; /* Override global div margin */
+}
+
+/* Image on the right half, starting exactly at center line */
+#middle-section .image-content {
+    position: fixed;
+    top: 100px; /* Match top of middle-section */
+    left: 50vw; /* Exactly on the center line */
+    width: 500px;
+    height: calc(100vh - 200px); /* Match visible window height */
+    pointer-events: none; 
+}
+
+#middle-section .image-content img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Crop image to fill */
+    display: block;
+    margin: 0;
+}
+
+#final-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1001;
+    overflow: hidden;
+}
+
+#final-image-container img {
+    height: 80vh;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    max-width: 90%;
+}
+
+.credits {
+    position: static;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 16px;
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+.credits p {
+    margin: 5px 0;
+}
+
+/* Arrow Styling */
+#scroll-arrow, #scroll-arrow-up {
+    z-index: 1001;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    position: static; 
+    width: auto;
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#scroll-arrow-up {
+    position: fixed; 
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#scroll-arrow.visible, #scroll-arrow-up.visible {
+    opacity: 0.5;
+    pointer-events: auto;
+}
+
+#scroll-arrow.visible:hover, #scroll-arrow-up.visible:hover {
+    opacity: 0.9;
+}
+
+/* Match font-size to sidebar */
+@media (max-width: 550px){
+    #middle-section .text-content {
         font-size: 18px;
-        font-weight: medium;
-        margin-bottom: 10;
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        z-index: 10;
-}        
-
-
-
-@media (max-width: 500px){
-    .bio-grid{
-    grid-template-columns: 10px 1fr 10px;
+    }
+}
+@media (min-width: 551px) and (max-width: 1200px){
+    #middle-section .text-content {
+        font-size: 21px;
+    }
+}
+@media (min-width: 1201px){
+    #middle-section .text-content {
+        font-size: 24px;
     }
 }
 
-@media (min-width: 501px) and (max-width: 1499px){
-    .bio-grid{
-    grid-template-columns: 1fr 5fr 1fr;
+/* Responsive adjustments for the new dimensions */
+@media (max-width: 1400px) {
+    #middle-section .image-content {
+        /* Reduce image width to prevent sidebar overlap */
+        width: calc(100vw - 50vw - 215px);
+        min-width: 200px;
+    }
+    #middle-section {
+        /* Adjust container width accordingly */
+        width: calc(100vw - 215px);
     }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px){
-    .bio-grid{
-    grid-template-columns: 1fr 3fr 1fr;
+@media (max-width: 1100px) {
+    #middle-section .image-content {
+        display: none; /* Hide image on smaller screens */
+    }
+    #middle-section .text-content {
+        width: calc(100% - 80px);
+        margin-left: 40px; 
+    }
+    #middle-section {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
-@media (min-width: 1500px) {
-    .bio-grid{
-    grid-template-columns: 1fr 1fr 1fr;
-    }
+#middle-section .text-content a {
+    color: white;
+    text-decoration: underline;
 }
 
-.bio-body{
+/* Target the specific download link block if it needs spacing */
+#middle-section .text-content p:first-child {
+    margin-top: 0; /* Prevent extra scrollable space at top */
+}
+
+#middle-section .text-content p:last-child {
+    margin-bottom: 0; /* Prevent extra scrollable space */
+}
+
+#middle-section .text-content p:last-child a {
     margin-top: 10px;
-    margin-bottom: 7px;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: justify;
+    display: inline-block;
 }
-        
-    .bio-date {
-        font-family: helvetica;
-        font-size: 12px;
-        font-weight: bold;
-        margin-top: 15;
-    }
-
-.bio-body-padding{
-        padding-bottom: 40px;
-}
-

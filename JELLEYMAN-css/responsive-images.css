@@ -1,0 +1,26 @@
+/* JELLEYMAN-css/responsive-images.css */
+
+/* Default styles for larger screens */
+.home-background {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    object-fit: contain; /* Ensure the whole image is visible */
+    object-position: center;
+}
+
+/* Styles for tablets and smaller desktops */
+@media (max-width: 1024px) {
+    .home-background {
+        height: 60vh; /* Example: 60% of viewport height */
+        object-fit: cover; /* Cover the area, cropping if necessary */
+    }
+}
+
+/* Styles for phones */
+@media (max-width: 768px) {
+    .home-background {
+        height: 40vh; /* Example: 40% of viewport height */
+        object-fit: cover;
+    }
+}

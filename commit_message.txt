@@ -1,0 +1,22 @@
+feat: Rename pages, refine sidebar effects, and add hover images
+
+This commit renames the "photos" page to "press" and "email" to "contact",
+updates the website navigation and translation files accordingly. It also
+refines the sidebar text hover effect for increased subtlety and
+implements a dynamic image background that appears on hover for each
+sidebar item.
+
+Changes include:
+- Renamed `photos.html` to `press.html` and `email.html` to `contact.html`.
+- Updated `i18n.js` to reflect the new page names in the sidebar item list.
+- Modified `locales/en.json` and `locales/fr.json` to update translation
+  keys for "press" and "contact" pages, and removed old "photos" and "email"
+  related keys.
+- Modified `JELLEYMAN-css/sidebar.css` to further refine the text hover
+  effect (more subtle `text-shadow` and `color` change).
+- Implemented dynamic image backgrounds on sidebar item hover by:
+    - Adding `data-background-image` attributes to sidebar elements in `i18n.js`.
+    - Adding CSS rules to `JELLEYMAN-css/sidebar.css` to display a `::before`
+      pseudo-element with the corresponding background image on hover.
+- Created placeholder images for sidebar hover effects (e.g., `sidebar-bio.jpg`).
+- Handled other image file additions/deletions as part of the project's evolution.

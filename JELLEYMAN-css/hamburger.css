@@ -1,0 +1,107 @@
+/* Hamburger menu icon */
+.hamburger-menu {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 2147483647; /* Max z-index possible to ensure it is on top */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Hide hamburger menu on larger screens */
+@media (min-width: 600px) {
+    .hamburger-menu {
+        display: none !important;
+    }
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    box-shadow: 0 0 2px rgba(0,0,0,0.8); /* Ensure visibility on light backgrounds */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Make bars black on the index page (white background) */
+body.body-index .hamburger-menu .bar {
+    background-color: black;
+    box-shadow: 0 0 2px rgba(255,255,255,0.8);
+}
+
+/* Ensure bars are white when the dark overlay is open, even on the index page */
+body.body-index .hamburger-menu.open .bar {
+    background-color: white;
+    box-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+
+/* Hamburger menu animation */
+.hamburger-menu.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Small screens < 600px: use #main-nav as overlay */
+@media (max-width: 599px) {
+    /* Make the nav container an overlay */
+    #main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        z-index: 10000;
+    }
+
+    #main-nav.open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* By default hide these if they aren't overridden */
+    #language-switcher-container,
+    #sidebar-placeholder {
+        display: none;
+    }
+
+    /* When menu is open, show and style the items */
+    #main-nav.open #language-switcher-container {
+        display: flex !important;
+        position: static;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+
+    #main-nav.open #sidebar-placeholder {
+        display: flex !important;
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #main-nav.open #sidebar-placeholder .sidebar-item {
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+    }
+}

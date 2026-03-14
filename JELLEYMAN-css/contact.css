@@ -1,0 +1,274 @@
+body.body-contact {
+    background-color: black;
+    color: white;
+    overflow: hidden; /* Prevent scrolling */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#contact-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/JELLEYMAN-profile3.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+body.body-contact a {
+    color: white;
+}
+
+.body-contact .header-left-section.contact-title {
+    margin-left: auto;
+    align-items: flex-end;
+    text-align: right;
+    flex: 1;
+}
+
+.body-contact .header-left-section.contact-title .header-left-section-sub {
+    font-size: 60px;
+}
+
+@media (min-width: 860px) and (max-width: 1200px) {
+    .body-contact .header-left-section.contact-title .header-left-section-sub {
+        font-size: 40.8px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 859px) {
+    .body-contact .header-left-section.contact-title .header-left-section-sub {
+        font-size: 26.136px;
+    }
+}
+
+@media (max-width: 599px) {
+    .body-contact .header-left-section.contact-title .header-left-section-sub {
+        font-size: 18px;
+    }
+}
+
+#middle-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    z-index: 1000;
+    background-image: url('../images/JELLEYMAN-electronic2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-container {
+    padding: clamp(60px, 20vh, 200px) 40px clamp(160px, 20vh, 200px) 40px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.contact-content-wrapper {
+    text-align: left;
+    max-width: 800px;
+}
+
+.body-contact .links-title {
+    font-size: 60px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+@media (min-width: 860px) and (max-width: 1200px) {
+    .body-contact .links-title {
+        font-size: 40.8px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 859px) {
+    .body-contact .links-title {
+        font-size: 26.136px;
+    }
+}
+
+@media (max-width: 599px) {
+    .body-contact .links-title {
+        font-size: 18px;
+    }
+}
+
+.body-contact .main-div {
+    font-size: 24px;
+}
+
+.social-links {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    opacity: 1 !important; /* Keep parent link opaque */
+    transition: none;
+}
+
+/* Size overrides for specific logos */
+.social-links .arts-foundation-logo {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.social-links .sounz-logo {
+    width: 120px !important;
+    height: 80px !important;
+}
+
+.social-links .instagram-logo,
+.social-links .youtube-logo,
+.social-links .bandcamp-logo {
+    width: 86px !important;
+    height: 86px !important;
+}
+
+.social-links .instagram-logo svg {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.social-links .youtube-logo svg,
+.social-links .bandcamp-logo svg {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.social-links .soundcloud-logo,
+.social-links .patreon-logo {
+    width: 86px !important;
+    height: 86px !important;
+}
+
+/* Individual icon hover logic to keep blending intact */
+.social-links a svg,
+.social-links a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.social-links a:hover svg,
+.social-links a:hover img {
+    opacity: 1;
+}
+
+/* Arts/Sounz specific: ensure they use standard opacity */
+.social-links .arts-foundation-logo img,
+.social-links .sounz-logo img {
+    /* Inherit from general img/svg rule below */
+}
+
+/* SoundCloud and Patreon specific: screen blend to remove black background */
+.social-links .soundcloud-logo img,
+.social-links .patreon-logo img {
+    mix-blend-mode: screen !important;
+    border-radius: 50%;
+}
+
+.social-links a svg {
+    fill: currentColor;
+}
+
+#scroll-arrow, #scroll-arrow-up {
+    z-index: 1001;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    position: static; 
+    width: auto;
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#scroll-arrow-up {
+    position: fixed; 
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#scroll-arrow.visible, #scroll-arrow-up.visible {
+    opacity: 0.5;
+    pointer-events: auto;
+}
+
+#scroll-arrow.visible:hover, #scroll-arrow-up.visible:hover {
+    opacity: 0.9;
+}
+
+.icon-banner {
+    position: fixed;
+    bottom: 60px; /* Above footer */
+    left: 40px;
+    z-index: 1000;
+    height: 40px;
+    transition: opacity 0.5s ease;
+}
+
+
+.icon-banner > img {
+    height: 100%;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1); /* Make it white on dark background */
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .icon-banner {
+        bottom: 50px;
+        left: 20px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 800px) {
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-container {
+        padding: clamp(40px, 15vh, 150px) 20px clamp(120px, 15vh, 180px) 20px;
+    }
+    .body-contact .links-title {
+        font-size: 16pt;
+    }
+    .body-contact .main-div {
+        font-size: 12pt;
+    }
+}
