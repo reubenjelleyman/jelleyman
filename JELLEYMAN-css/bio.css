@@ -218,11 +218,20 @@ body.body-bio {
     }
     #middle-section .text-content {
         width: calc(100% - 80px);
-        margin-left: 40px; 
+        margin-left: 40px;
     }
     #middle-section {
         width: 100%;
         max-width: 100%;
+    }
+}
+
+/* On tablets where the sidebar is still visible (600–1099px), restore
+   sidebar clearance that was overridden by the rule above. */
+@media (min-width: 600px) and (max-width: 1100px) {
+    #middle-section {
+        width: calc(100vw - 215px);
+        max-width: calc(100vw - 215px);
     }
 }
 

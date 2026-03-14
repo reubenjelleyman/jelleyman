@@ -220,3 +220,16 @@ body.body-electronic {
 @media (max-width: 550px) {
     #bandcamp-iframe { width: 100%; }
 }
+
+/* On phones, the bandcamp player's fixed left:40px + width:350px = 390px
+   overflows narrow screens (e.g. iPhone 8 = 375px). Stretch it to fit. */
+@media (max-width: 599px) {
+    .bandcamp-player-wrapper {
+        left: 15px;
+        right: 15px;
+        width: auto;
+    }
+    #bandcamp-iframe {
+        width: 100%;
+    }
+}

@@ -211,6 +211,15 @@ body {
     }
 }
 
+/* On tablets (600–1023px) the sidebar is still visible but the mobile layout
+   is active. Add right padding so blog content doesn't slide under the sidebar.
+   Sidebar: 150px wide + 40px right margin = 190px from the right edge. */
+@media (min-width: 600px) and (max-width: 1023px) {
+    .scrapbook-middle-column {
+        padding-right: 210px;
+    }
+}
+
 /* Typography and common elements */
 .blog-date {
     font-family: monospace;

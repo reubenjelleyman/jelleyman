@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding-top: 10px;
     padding-left: 40px; /* Aligned with header and sidebar */
     padding-right: 40px; /* Aligned with header and sidebar */
@@ -15,6 +16,7 @@
     bottom: 5px;
     color: white;
     box-sizing: border-box;
+    white-space: nowrap;
 }
 
 body.body-index .footer,
@@ -44,4 +46,38 @@ body.body-contact .footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Tablets (600–767px): padding stays 40px but fixed 250px sections can crowd
+   the center. Switch to auto widths and reduce padding a little. */
+@media (min-width: 600px) and (max-width: 767px) {
+    .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 13px;
+    }
+    .footer-left-section {
+        width: auto;
+        flex: 0 1 auto;
+    }
+    .footer-right-section {
+        width: auto;
+        flex: 0 1 auto;
+    }
+}
+
+@media (max-width: 599px) {
+    .footer {
+        padding-left: 12px;
+        padding-right: 12px;
+        font-size: 11px;
+    }
+    .footer-left-section {
+        width: auto;
+        flex: 0 1 auto;
+    }
+    .footer-right-section {
+        width: auto;
+        flex: 0 1 auto;
+    }
 }
