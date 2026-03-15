@@ -104,11 +104,6 @@ body {
     top: 0 !important;
 }
 
-/* Remove shadow from hamburger menu bars on this page */
-.body-scrapbook .hamburger-menu .bar {
-    box-shadow: none;
-}
-
 /* Remove text-shadow from navigation elements on this page */
 .body-scrapbook .sidebar-element:hover a,
 .body-scrapbook .sidebar-element span,
@@ -175,6 +170,13 @@ body {
     }
 }
 
+/* Mobile phones (<600px): align title with hamburger (top:30px, right:20px) */
+@media (max-width: 599px) {
+    .header-top {
+        padding: 30px 40px 40px 20px;
+    }
+}
+
 /* Mobile fallback */
 @media (max-width: 1023px) {
     body.body-scrapbook {
@@ -217,6 +219,19 @@ body {
 @media (min-width: 600px) and (max-width: 1023px) {
     .scrapbook-middle-column {
         padding-right: 210px;
+    }
+}
+
+/* Landscape phones in mobile-layout range (600–1023px wide, ≤480px tall):
+   padding-top:250 leaves only ~125px visible on a 375px screen. Reduce it
+   and tighten the fade-in mask so content appears quickly below the header. */
+@media (min-width: 600px) and (max-width: 1023px) and (max-height: 480px) {
+    .scrapbook-scroll-wrapper {
+        -webkit-mask-image: linear-gradient(to bottom, transparent 60px, black 120px);
+        mask-image: linear-gradient(to bottom, transparent 60px, black 120px);
+    }
+    .scrapbook-middle-column {
+        padding-top: 160px;
     }
 }
 

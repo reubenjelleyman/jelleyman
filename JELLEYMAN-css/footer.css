@@ -1,18 +1,17 @@
 .footer {
-    height: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     padding-top: 10px;
     padding-left: 40px; /* Aligned with header and sidebar */
     padding-right: 40px; /* Aligned with header and sidebar */
     padding-bottom: 10px;
-    z-index: 10000; /* Increased to be above sidebar (9999) */
+    margin: 0; /* Reset global div margins — margin-right: 20px was shrinking the footer asymmetrically */
+    z-index: 10000; /* Above sidebar (9999) */
     background-color: rgba(255, 255, 255, 0.05);
     position: fixed;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     bottom: 5px;
     color: white;
     box-sizing: border-box;
@@ -21,63 +20,48 @@
 
 body.body-index .footer,
 body.body-contact .footer {
-    /* If these pages are light themed, though currently they seem to be dark/transparent too */
-    /* color: black; */
-}
-
-/* Ensure right section text is white by default unless on index */
-.footer-right-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 250px;
-    color: inherit;
+    /* reserved for page-specific colour overrides */
 }
 
 .footer-left-section {
-    width: 250px;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin: 0;
 }
 
 .footer-central-section {
-    flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin: 0;
 }
 
-/* Tablets (600–767px): padding stays 40px but fixed 250px sections can crowd
-   the center. Switch to auto widths and reduce padding a little. */
-@media (min-width: 600px) and (max-width: 767px) {
+.footer-central-section #scroll-arrow {
+    margin: 0;       /* Reset global div margins that push it off-centre */
+    transform: none; /* Reset page-level translateY(10px) that shifts it down */
+}
+
+.footer-central-section #scroll-arrow.visible {
+    transform: none;
+}
+
+.footer-right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: inherit;
+    margin: 0;
+}
+
+/* Phones (<600px): reduce padding and font size. Keep left/right equal so
+   footer text aligns with the hamburger menu edges on small screens. */
+@media (max-width: 599px) {
     .footer {
         padding-left: 20px;
         padding-right: 20px;
-        font-size: 13px;
-    }
-    .footer-left-section {
-        width: auto;
-        flex: 0 1 auto;
-    }
-    .footer-right-section {
-        width: auto;
-        flex: 0 1 auto;
-    }
-}
-
-@media (max-width: 599px) {
-    .footer {
-        padding-left: 12px;
-        padding-right: 12px;
         font-size: 11px;
-    }
-    .footer-left-section {
-        width: auto;
-        flex: 0 1 auto;
-    }
-    .footer-right-section {
-        width: auto;
-        flex: 0 1 auto;
     }
 }

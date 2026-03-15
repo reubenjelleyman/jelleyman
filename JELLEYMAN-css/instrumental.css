@@ -259,4 +259,26 @@ body.body-instrumental {
     #middle-section .content-wrapper {
         right: 15px;
     }
+    /* Constrain header-top so its width:100% doesn't bleed into hamburger space */
+    .header-top {
+        right: 50px;
+        width: auto;
+    }
+}
+
+/* Landscape phones (≥600px wide, ≤480px tall): content-wrapper top:100/bottom:200
+   leaves only 75px of usable height on a 375px screen. Reduce offsets and shrink
+   the SoundCloud player so everything fits without collision. */
+@media (min-width: 600px) and (max-height: 480px) {
+    #middle-section .content-wrapper {
+        top: 60px;
+        bottom: 140px;
+    }
+    .soundcloud-player-wrapper {
+        height: 80px;
+        bottom: 50px;
+    }
+    .soundcloud-player-wrapper.shrunk {
+        height: 60px;
+    }
 }

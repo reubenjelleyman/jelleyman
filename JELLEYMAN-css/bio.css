@@ -188,6 +188,20 @@ body.body-bio {
         font-size: 18px;
     }
 }
+
+/* Page 3 (final image): hide header titles — bio-scroll.js adds this class */
+body.bio-page3 .header-top,
+body.bio-page3 .header-bottom {
+    display: none !important;
+}
+
+/* iPhone sizes (<600px): push final image down so it clears the hamburger icon */
+@media (max-width: 599px) {
+    #final-image-container {
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+}
 @media (min-width: 551px) and (max-width: 1200px){
     #middle-section .text-content {
         font-size: 21px;
@@ -232,6 +246,16 @@ body.body-bio {
     #middle-section {
         width: calc(100vw - 215px);
         max-width: calc(100vw - 215px);
+    }
+}
+
+/* Landscape phones (≥600px wide, ≤480px tall): the default top:100/bottom:100
+   offsets leave only ~175px of content. Tighten them for short viewports. */
+@media (min-width: 600px) and (max-height: 480px) {
+    #middle-section {
+        top: 60px;
+        bottom: 60px;
+        height: calc(100vh - 120px);
     }
 }
 

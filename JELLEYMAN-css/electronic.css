@@ -221,15 +221,38 @@ body.body-electronic {
     #bandcamp-iframe { width: 100%; }
 }
 
+/* Landscape phones (≤480px tall): the bandcamp player sits at top:50 height:200,
+   which consumes >50% of the viewport and overlaps the centred content section.
+   Hide it — the audio is still accessible via the SoundCloud link in the content. */
+@media (max-height: 480px) {
+    .bandcamp-player-wrapper {
+        display: none;
+    }
+}
+
 /* On phones, the bandcamp player's fixed left:40px + width:350px = 390px
    overflows narrow screens (e.g. iPhone 8 = 375px). Stretch it to fit. */
 @media (max-width: 599px) {
     .bandcamp-player-wrapper {
+        top: 80px;
+        height: 155px; /* 45px cropped from top of the 200px view */
         left: 15px;
         right: 15px;
         width: auto;
+        margin: 0;
+    }
+    .bandcamp-player-wrapper #bandcamp-iframe {
+        transform: translateY(-315px); /* 270px base + 45px to skip cropped top */
     }
     #bandcamp-iframe {
         width: 100%;
+    }
+    /* Remove scrollbar padding and reset global div margin so photo centres correctly */
+    #middle-section .content-wrapper {
+        padding-right: 0;
+        margin-right: 0;
+    }
+    #middle-section .photo-content {
+        margin-right: 0;
     }
 }

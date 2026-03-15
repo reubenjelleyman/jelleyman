@@ -167,4 +167,10 @@ body.body-index #language-switcher-container .separator {
 @media (max-width: 599px) {
     .header-left-section-title { font-size: 25px; }
     .header-left-section-sub { font-size: 18px; }
+
+    /* Align title top and left with the hamburger icon (top:30px, right:20px) */
+    .header-top {
+        top: 30px;
+        left: 20px;
+    }
 }

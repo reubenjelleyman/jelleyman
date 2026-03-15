@@ -272,3 +272,12 @@ body.body-contact a {
         font-size: 12pt;
     }
 }
+
+/* Landscape phones (≤480px tall): the default bottom clamp(160px,…) leaves only
+   ~140px for content at 375px height. Reduce vertical padding so social icons fit. */
+@media (max-height: 480px) {
+    .contact-container {
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}

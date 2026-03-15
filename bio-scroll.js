@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             middleSection.style.opacity = easeInOutCubic(Math.min(1, msProgress));
 
             finalImageContainer.style.opacity = 0;
+            document.body.classList.remove('bio-page3');
             if (sidebar) {
                 sidebar.style.opacity = 1 - easeInOutCubic(Math.min(1, scrollY / backgroundFadeOutPoint));
                 sidebar.style.pointerEvents = sidebar.style.opacity < 0.1 ? 'none' : 'auto';
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Final image fade in (last third)
             const fiProgress = Math.max(0, (phaseProgress - 2/3) * 3);
             finalImageContainer.style.opacity = easeInOutCubic(Math.min(1, fiProgress));
+            document.body.classList.toggle('bio-page3', fiProgress > 0.5);
 
             background.style.opacity = 0;
             if (header) {
